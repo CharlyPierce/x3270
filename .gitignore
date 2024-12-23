@@ -14,7 +14,6 @@ favicon.c
 Makefile
 Makefile.bak
 instlist.man
-obj/
 Release/
 ReleaseNotes.html
 Resources.html
