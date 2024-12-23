@@ -1133,7 +1133,7 @@ ft_start(void)
 
     /* Get the host file from its widget */
     XtVaGetValues(host_file, XtNstring, &xftc.host_filename, NULL);
-	printf("[DEBUG] 1 host_filename from widget: %s\n", xftc.host_filename);
+	// printf("[DEBUG] 1 host_filename from widget: %s\n", xftc.host_filename);
     if (!*xftc.host_filename) {
 	return false;
     }
@@ -1310,7 +1310,7 @@ progress_popup_callback(Widget w _is_unused, XtPointer client_data _is_unused,
     XtVaSetValues(to_file, XtNlabel,
 	    xftc.receive_flag? fts.resolved_local_filename: xftc.host_filename,
 	    NULL);
-	printf("[DEBUG] 2 to_file value assigned: %s\n", xftc.host_filename);
+	// printf("[DEBUG] 2 to_file value assigned: %s\n", xftc.host_filename);
     switch (ft_state) {
     case FT_AWAIT_ACK:
 	XtUnmapWidget(ft_status);
@@ -1541,6 +1541,6 @@ ft_gui_awaiting(void)
 		ftc->receive_flag? fts.resolved_local_filename:
 				   ftc->host_filename,
 		NULL);
-	printf("[DEBUG] ft_gui_awaiting: to_file label set to: %s\n", ftc->host_filename);
+	// printf("[DEBUG] ft_gui_awaiting: to_file label set to: %s\n", ftc->host_filename);
     }
 }

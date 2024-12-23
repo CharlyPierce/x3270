@@ -152,7 +152,7 @@ cmenu_t *
 add_menu(char *title)
 {
     cmenu_t *c;
-    printf("[DEBUG EN MENUBAR 1]");
+    // printf("[DEBUG EN MENUBAR 1]");
     c = (cmenu_t *)Malloc(sizeof(cmenu_t) + strlen(title) + 1);
     c->title = (char *)(c + 1);
     c->offset = current_offset;
@@ -750,7 +750,7 @@ fm_print(void *ignored _is_unused)
 static void
 fm_xfer(void *ignored _is_unused)
 {
-	printf("[DEBUG EN MENUBAR 5 ]");
+	// printf("[DEBUG EN MENUBAR 5 ]");
     if (ft_state == FT_NONE) {
 	push_macro(AnEscape "(\"" AnTransfer "()\")");
     } else {

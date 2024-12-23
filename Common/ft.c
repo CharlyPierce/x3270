@@ -385,7 +385,7 @@ ft_init_conf(ft_conf_t *p)
     if (appres.ft.host_file) {
 	Replace(p->host_filename, NewString(appres.ft.host_file));
 	// [DEBUG 100] Imprimir valor inicial de appres.ft.host_file
-	printf("[DEBUG 100] appres.ft.host_file: %s\n", appres.ft.host_file);
+	// printf("[DEBUG 100] appres.ft.host_file: %s\n", appres.ft.host_file);
     } else {
 	Replace(p->host_filename, NULL);
     }
@@ -711,7 +711,7 @@ ft_go(ft_conf_t *p, enum iaction cause)
     vb_init(&r);
 
 	// [DEBUG 106] Verificar p->host_filename en ft_go
-	printf("[DEBUG 106] p->host_filename en ft_go: %s\n", p->host_filename);
+	// printf("[DEBUG 106] p->host_filename en ft_go: %s\n", p->host_filename);
 
     vb_appendf(&r, "IND\\e005BFILE %s %s %s",
 	    p->receive_flag? "GET": "PUT",
@@ -870,9 +870,9 @@ parse_ft_keywords(unsigned argc, const char **argv)
     ft_init_conf(p);
     p->is_action = true;
     for (i = 0; i < N_PARMS; i++) {
-	printf("[DEBUG RESET] 200 Before Replace: tp[%d].value: %s\n", i, tp[i].value);
+	// printf("[DEBUG RESET] 200 Before Replace: tp[%d].value: %s\n", i, tp[i].value);
 	Replace(tp[i].value, NULL);
-	printf("[DEBUG RESET] 200 After Replace: tp[%d].value: %s\n", i, tp[i].value);
+	// printf("[DEBUG RESET] 200 After Replace: tp[%d].value: %s\n", i, tp[i].value);
     }
 
     /* The special keyword 'Defaults' means 'just use the defaults'. */
@@ -883,7 +883,7 @@ parse_ft_keywords(unsigned argc, const char **argv)
 
     /* See what they specified. */
     for (j = 0; j < argc; j++) {
-	printf("[DEBUG ARGV LOOP] argv[%u]: %s\n", j, argv[j]);
+	// printf("[DEBUG ARGV LOOP] argv[%u]: %s\n", j, argv[j]);
 	for (i = 0; i < N_PARMS; i++) {
 	    char *eq;
 	    size_t kwlen;
@@ -962,11 +962,11 @@ parse_ft_keywords(unsigned argc, const char **argv)
     }
     if (tp[PARM_HOST_FILE].value) {
 	// [DEBUG 101] Imprimir valor asignado a tp[PARM_HOST_FILE].value
-	printf("[DEBUG 101] tp[PARM_HOST_FILE].value: %s\n", tp[PARM_HOST_FILE].value);
+	// printf("[DEBUG 101] tp[PARM_HOST_FILE].value: %s\n", tp[PARM_HOST_FILE].value);
 	p->host_filename = NewString(tp[PARM_HOST_FILE].value);
 
 	// [DEBUG 102] Imprimir valor asignado a tp[PARM_HOST_FILE].value
-	printf("[DEBUG 102] tp[PARM_HOST_FILE].value: %s\n", tp[PARM_HOST_FILE].value);
+	// printf("[DEBUG 102] tp[PARM_HOST_FILE].value: %s\n", tp[PARM_HOST_FILE].value);
     }
     if (tp[PARM_LOCAL_FILE].value) {
 	p->local_filename = NewString(tp[PARM_LOCAL_FILE].value);
@@ -1132,7 +1132,7 @@ bool
 ft_start_backend(ft_conf_t *p, enum iaction cause)
 {
 	// [DEBUG 105] Verificar p->host_filename en ft_start_backend
-	printf("[DEBUG 105] p->host_filename en ft_start_backend: %s\n", p->host_filename);
+	// printf("[DEBUG 105] p->host_filename en ft_start_backend: %s\n", p->host_filename);
 
     fts.local_file = ft_go(p, cause);
     if (fts.local_file == NULL) {
@@ -1232,12 +1232,12 @@ Transfer_action(ia_t ia, unsigned argc, const char **argv)
     if (p == NULL) {
 	/* Parse the keywords into the ft_state structure. */
 
-	printf("[DEBUG TRANSFER_ACTION] argc: %u\n", argc);
+	// printf("[DEBUG TRANSFER_ACTION] argc: %u\n", argc);
 	for (unsigned i = 0; i < argc; i++) {
-		printf("[DEBUG TRANSFER_ACTION ARGV] argv[%u]: %s\n", i, argv[i]);
+		// printf("[DEBUG TRANSFER_ACTION ARGV] argv[%u]: %s\n", i, argv[i]);
 
         char* modified_arg = add_closing_parenthesis(argv[i]);
-        printf("[DEBUG MODIFIED ARGV] argv[%u]: %s\n", i, modified_arg);
+        // printf("[DEBUG MODIFIED ARGV] argv[%u]: %s\n", i, modified_arg);
         argv[i] = modified_arg; // Reemplaza el argumento original con el modificado
 
 
@@ -1248,11 +1248,11 @@ Transfer_action(ia_t ia, unsigned argc, const char **argv)
 	}
 	p->is_action = true;
     // [DEBUG 103] Imprimir p->host_filename en Transfer_action
-    printf("[DEBUG 103] p->host_filename en Transfer_action: %s\n", p->host_filename);
+    // printf("[DEBUG 103] p->host_filename en Transfer_action: %s\n", p->host_filename);
     }
 
 	// [DEBUG 104] Verificar p->host_filename antes de ft_start_backend
-	printf("[DEBUG 104] p->host_filename antes de ft_start_backend: %s\n", p->host_filename);
+	// printf("[DEBUG 104] p->host_filename antes de ft_start_backend: %s\n", p->host_filename);
 
     /* Start the transfer. */
     return ft_start_backend(p, ia);
