@@ -78,6 +78,23 @@
 # endif /*]*/
 #endif /*]*/
 
+
+char *escape_special_chars(const char *input) {
+    size_t len = strlen(input);
+    size_t new_len = len * 2; // Considera que todos los caracteres podrían necesitar escapar
+    char *escaped = (char *)malloc(new_len + 1);
+    size_t j = 0;
+
+    for (size_t i = 0; i < len; i++) {
+        if (input[i] == ')') {
+            escaped[j++] = '\\'; // Escapa el paréntesis
+        }
+        escaped[j++] = input[i];
+    }
+    escaped[j] = '\0';
+    return escaped;
+}
+
 /*
  * The menus look like this:
  *
@@ -135,7 +152,7 @@ cmenu_t *
 add_menu(char *title)
 {
     cmenu_t *c;
-
+    printf("[DEBUG EN MENUBAR 1]");
     c = (cmenu_t *)Malloc(sizeof(cmenu_t) + strlen(title) + 1);
     c->title = (char *)(c + 1);
     c->offset = current_offset;
@@ -729,15 +746,55 @@ fm_print(void *ignored _is_unused)
     push_macro(AnPrintText "()");
 }
 
+
 static void
 fm_xfer(void *ignored _is_unused)
 {
+	printf("[DEBUG EN MENUBAR 5 ]");
     if (ft_state == FT_NONE) {
 	push_macro(AnEscape "(\"" AnTransfer "()\")");
     } else {
-	push_macro(AnTransfer "(" KwCancel ")");
+    push_macro(AnEscape "(\"" KwCancel "()\")");
+	// push_macro(AnTransfer "(" KwCancel ")");
     }
 }
+
+// static void
+// fm_xfer(void *param)
+// {
+//     const char *input = (const char *)param; // Valor dinámico ingresado
+    
+//     // Imprimir el valor de input
+//     printf("Input recibido: %s\n", input);
+
+//     if (ft_state == FT_NONE) {
+//         // Escapamos los caracteres especiales
+//         char *escaped_input = escape_special_chars(input);
+        
+//         // Imprimir el valor escapado
+//         printf("Input escapado: %s\n", escaped_input);
+
+//         // Crear y ejecutar la macro
+//         char *macro_content = Asprintf(AnEscape "(\"" AnTransfer "(hostfile='%s',local='...')\")", escaped_input);
+        
+//         // Imprimir el contenido de la macro antes de ejecutarla
+//         printf("Macro generada: %s\n", macro_content);
+
+//         push_macro(macro_content); // Ejecutamos la macro con la entrada escapada
+
+//         // Liberar memoria
+//         free(escaped_input);
+//         free(macro_content);
+//     } else {
+//         // Imprimir mensaje indicando que el estado no permite transferencia
+//         printf("Estado actual no permite transferencia. Cancelando...\n");
+//         push_macro(AnTransfer "(" KwCancel ")");
+//     }
+// }
+
+
+
+
 
 static void
 fm_trace(void *ignored _is_unused)
