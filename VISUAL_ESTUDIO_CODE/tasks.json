@@ -1,0 +1,54 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar COBOL usando script",
+      "type": "shell",
+      "command": "${workspaceFolder}/.script/compilar-cobol.sh",
+      "args": [
+        "${fileDirname}",
+        "${fileBasenameNoExtension}",
+        "${file}",
+        "-I${workspaceFolder}/COPYS",
+        "-I${workspaceFolder}/CopyBooks",
+        "-I/mnt/c/Users/PC/Documents/biblioteca/COPYS"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Compila un archivo COBOL y maneja los mensajes desde un script externo.",
+      "presentation": {
+        "reveal": "always",       // La terminal siempre se muestra
+        "focus": true,            // Foco a la terminal 
+        // "panel": "shared"         // Panel compartido
+      }
+    },
+
+
+
+    {
+      "label": "Run send.py",
+      "type": "process",
+      "command": "python3",
+
+      "args": [
+        "${workspaceFolder}/.script/send.py",
+        "${fileBasenameNoExtension}",
+        "${file}",
+      ],
+      "group": {
+        "kind": "none"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",       // Terminal siempre se muestra
+        "focus": true,            // Foco a la terminal 
+        "panel": "shared"         // Panel compartido 
+      }
+    }
+
+
+  ]
+}

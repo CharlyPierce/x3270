@@ -1,0 +1,38 @@
+{
+    "coboleditor.copybookdirs": [
+        "${workspaceFolder}/COPYS",
+        "/mnt/c/Users/PC/Documents/biblioteca_c/COPYS",
+        "C:\\Users\\PC\\Documents\\biblioteca_c\\COPYS",
+    ],
+    "coboleditor.copybookexts": [
+        ".cbl",
+        ".cpy",
+        ".copy",
+        ".jcl"
+    ],
+    "coboleditor.scan_comments_for_hints": true,
+    "coboleditor.scan_comment_copybook_token": "source-dependency",
+
+    "coboleditor.intellisense_style": "uppercase",
+    "coboleditor.format_on_return": true,
+
+    "editor.rulers": [72],
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 75,
+    "editor.wordWrapColumn.enable": true,
+
+    // "coboleditor.tabstops": 4,
+    // Puedes descomentar si deseas ajustar el tabulador
+    "coboleditor.margin": true,
+
+    "coboleditor.linter_house_standards_rules": [
+        "working-storage=^WS.*$",
+        "local-storage=^LS.*$",
+        "linkage=^LK.*$"
+    ],
+    "coboleditor.enable_codelens_copy_replacing": true,
+    "coboleditor.enable_columns_tags": true,
+    "coboleditor.enable_semantic_token_provider": true,
+    "coboleditor.enable_tabstops_anchors": true,
+    "coboleditor.parse_copybooks_for_references": true
+}
