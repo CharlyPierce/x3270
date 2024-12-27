@@ -8,7 +8,6 @@
         ".cbl",
         ".cpy",
         ".copy",
-        ".jcl"
     ],
     "coboleditor.scan_comments_for_hints": true,
     "coboleditor.scan_comment_copybook_token": "source-dependency",
@@ -34,5 +33,7 @@
     "coboleditor.enable_columns_tags": true,
     "coboleditor.enable_semantic_token_provider": true,
     "coboleditor.enable_tabstops_anchors": true,
-    "coboleditor.parse_copybooks_for_references": true
+    "coboleditor.parse_copybooks_for_references": true,
+
+
 }

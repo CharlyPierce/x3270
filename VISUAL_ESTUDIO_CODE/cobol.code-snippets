@@ -70,7 +70,7 @@
             "           ."
         ],
         "description": "Sobrescribe todo el contenido del archivo con una plantilla COBOL"
-    }
+    },
     
     
     
@@ -83,9 +83,24 @@
     "******************************************************************"
         ],
         "description": "Bloque de comentarios para COBOL"
-    }
+    },
+     
+    "Insert JCL Line Guide": {
+        "prefix": "cblgde",
+        "body": [
+    "//*        12",
+        ],
+        "description": "Insert a line guide for JCL"
+    },
+      
+    "Insert JCL Line Guide 2": {
+        "prefix": "cblcols",
+        "body": [
+    "----+----1----+----2----+----3----+----4----+----5----+----6----+----7--",
+        ],
+        "description": "Insert a line guide for JCL"
+    }     
+
     
     
-    
-    
-    }
+}
